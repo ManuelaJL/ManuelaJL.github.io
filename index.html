@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sample Document</title>
+
+  <script>
+  
+  function getIP(ppp) {
+	connectionAvailability(ppp.ip);
+  }
+  
+  function connectionAvailability(ii) {
+    var d = "";
+	var dc = 0;
+	var er = true;
+	
+	for (let i = 0; i < ii.length; i++) {
+		if(ii.charAt(i)=="."){
+			d = d + dc;
+			dc = 0;
+		} else {
+			dc++;
+		}
+	}
+	
+	d = d + dc;
+	if(er) {
+		document.write("<center><h1>ERROR " + getError(ii) + "-" + d + "</h1>");
+		document.write("<h2>Cannot access web host at this time, due to questionable connection.</h2> Please try again later, when the server is less overloaded. <br> Or try with 	another device, if you were using an unstable connection.</center>");
+    }
+	
+  }
+  
+  function getError(problem) {
+	return "FX" + problem.replaceAll('.', '');
+  }
+  
+  
+  </script>
+  <script src="http://api.ipify.org?format=jsonp&callback=getIP"></script>
+  
+</head>
+<body>
+  <!--<div style="position:absolute;bottom:50px;margin-top:10px;padding:8px;background:#fee;"><center>If you don't see anything, disable your ad blocker</center></small>-->
+</body>
+</html>
